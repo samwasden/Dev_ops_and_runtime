@@ -26,11 +26,13 @@ function addToZero(numbers) {
     if (numbers.length < 2) {
         return false
     }
+
+    // array.prototype.sort() in node.js(chrome V8 engine) averages out to n log n 
+    // which would be the most complex of my function.
+
     numbers.sort((a, b) => a - b);
-    console.log(numbers)
     let i = 0
     while (numbers[i] <= 0) {
-        console.log("new")
         let target = Math.abs(numbers[i])
         let j = Math.floor(numbers.length/2) - 1
         let arr = numbers.slice(i+1, numbers.length)
@@ -43,7 +45,6 @@ function addToZero(numbers) {
 }
 
 function findOpposite(target, j, arr) {
-    console.log(arr)
     if (arr[j] === target) {
         return true
     }
